@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Projects · SCIA — SCIence in Architecture</title>
+  <meta name="description" content="Current and past research projects of SCIA, Prof. Soner Önder's computer architecture group at Michigan Tech: Vectorized Instruction Space, SCALE, Sphinx, FAST, and more.">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="container nav" aria-label="Primary">
+      <a class="brand" href="index.html" aria-label="SCIA home">
+        <img src="assets/img/logo-160.png" alt="" width="169" height="160">
+        <span class="brand-text">
+          <span class="brand-name">SCIA</span>
+          <span class="brand-sub">SCIence in Architecture</span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Toggle navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="people.html">People</a></li>
+        <li><a href="projects.html" aria-current="page">Projects</a></li>
+        <li><a href="publications.html">Publications</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <div class="container">
+      <header class="page-head">
+        <span class="eyebrow">Projects</span>
+        <h1>Research projects</h1>
+        <p>A common thread runs through our projects: let the compiler and the microarchitecture share the work of extracting parallelism, and give each a program representation the other can act on directly.</p>
+      </header>
+
+      <section class="section" style="padding-top:0" aria-labelledby="current-heading">
+        <h2 id="current-heading">Current projects</h2>
+
+        <article class="card project" id="vis">
+          <div class="project-head">
+            <h3>Vectorized Instruction Space (VIS)</h3>
+            <span class="badge active">Active</span>
+          </div>
+          <div class="fund">NSF CCF-2211353 · Collaborative Research: SHF: Medium · Oct 2022 – Sep 2027 · with Florida State University</div>
+          <p>How fast a processor can execute a program is still largely decided by how fast it can get through branch instructions. VIS applies the principle of vectorization to the <em>instruction space</em>: using an executable dynamic single-assignment form at the machine-instruction level, control dependences are converted into data dependences with far less overhead than traditional predication, naturally combining controlled multi-path execution with speculation. The goal is to eliminate a large fraction of hard-to-predict branches and to unroll loops with unknown trip counts efficiently. The project develops the foundations of the paradigm at both the microarchitecture and compiler level, targeting superscalar and VLIW machines, and releases its toolsets as open source.</p>
+          <ul class="links">
+            <li><a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2211353" aria-label="NSF award page for VIS">NSF award page</a></li>
+            <li><a href="publications.html?q=bootstrapping">Related publication: Facilitating the Bootstrapping of a New ISA (LCTES 2023)</a></li>
+          </ul>
+        </article>
+
+        <article class="card project" id="scale">
+          <div class="project-head">
+            <h3>Statically Controlled Asynchronous Lane Execution (SCALE)</h3>
+            <span class="badge">Completed 2025</span>
+          </div>
+          <div class="fund">NSF CCF-1901005 · Collaborative Research: SHF: Medium · Sep 2019 – Aug 2025 · with Florida State University</div>
+          <p>SCALE aims to meet or exceed the performance of a traditional superscalar processor while approaching the energy efficiency of a VLIW. The architecture provides separate asynchronous execution lanes; dependences between instructions in different lanes are identified statically by the compiler, which inserts the inter-lane synchronization. Because the lanes are explicit, the compiler can generate code for different modes of execution — explicit packaging of parallel instructions, parallel and pipelined loop iterations, SPMD execution, and independent multi-threading — and adapt to whatever kind of parallelism is available at each point in a program. The project produced the Synchronized Lane Architecture (SLA), its code generator, and the tooling for bootstrapping a new ISA.</p>
+          <ul class="links">
+            <li><a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1901005" aria-label="NSF award page for SCALE">NSF award page</a></li>
+            <li><a href="https://digitalcommons.mtu.edu/cgi/viewcontent.cgi?article=2931&amp;context=etdr">Scott Pomerville, <em>Statically Controlled Synchronized Lane Architectures</em> (Ph.D. thesis, 2024)</a></li>
+            <li><a href="publications.html?q=vliw">Related publication: Can Fine-Grain Multi-threading Subsume VLIW? (LCTES 2026)</a></li>
+          </ul>
+        </article>
+
+        <article class="card project" id="ires">
+          <div class="project-head">
+            <h3>International Research Experiences with NTNU</h3>
+            <span class="badge">Completed 2025</span>
+          </div>
+          <div class="fund">NSF OISE-2103105 · IRES Track I: Collaborative Research · Sep 2021 – Aug 2025 · with Florida State University and NTNU</div>
+          <p>An NSF International Research Experiences for Students (IRES) program that sent cohorts of Michigan Tech and Florida State doctoral students to the <a href="https://www.ntnu.edu/idi/cal">Computer Architecture Laboratory (CAL)</a> at the Norwegian University of Science and Technology in Trondheim for ten-week research stays each summer. Working with the groups of Professors Magnus Själander and Magnus Jahre, students pursued compiler and architecture techniques for automatically improving the performance and energy efficiency of applications — the same theme that runs through our VIS and SCALE work. The collaboration with NTNU continues beyond the award.</p>
+          <ul class="links">
+            <li><a href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=2103105" aria-label="NSF award page for IRES">NSF award page</a></li>
+            <li><a href="https://blogs.mtu.edu/computing/2021/05/19/oise-ires-project-to-fund-international-research-experiences-for-grad-students/">Michigan Tech announcement</a></li>
+          </ul>
+        </article>
+
+        <article class="card project" id="fast">
+          <div class="project-head">
+            <h3>FAST — Flexible Architecture Simulation Tool</h3>
+            <span class="badge active">Infrastructure</span>
+          </div>
+          <div class="fund">Long-running lab infrastructure · ADL / ADL++</div>
+          <p>FAST generates cycle-level microarchitecture simulators from descriptions written in our architecture description language (ADL). Both the instruction set and the microarchitecture are specified in ADL; a typical superscalar description runs 6,000–8,000 lines and yields a 30,000–35,000-line C++ simulator. A new simulator takes one to three person-months to produce instead of the twelve to eighteen typical of hand-coded simulators, which is what makes thorough design-space exploration practical. FAST includes a debugging environment and extensive performance-data collection, and version 7.2 can checkpoint and restart at any point — so every SimPoint of a benchmark can be simulated in parallel.</p>
+          <ul class="links">
+            <li><a href="https://pages.mtu.edu/~soner/fast.html">Project page</a></li>
+            <li><a href="https://pages.mtu.edu/~soner/fast_manual.pdf">FAST user manual (PDF)</a></li>
+            <li><a href="publications.html?q=ADL">Related publications: ADL++ and automatic simulator generation</a></li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="section" aria-labelledby="past-heading">
+        <h2 id="past-heading">Earlier projects</h2>
+        <ul class="project-list">
+          <li id="dilp">
+            <strong>Dependent ILP: Dynamic Hoisting and Eager Scheduling of Dependent Instructions</strong>
+            <span class="fund">NSF CCF-1823398 · FoMR: Collaborative Research · 2018 · with Florida State University</span>
+            <span>Techniques for hoisting and eagerly scheduling instructions that depend on one another, to expose parallelism that conventional out-of-order scheduling leaves on the table.</span>
+            <div><a class="small" href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1823398" aria-label="NSF award page for Dependent ILP">NSF award page</a></div>
+          </li>
+          <li id="sphinx">
+            <strong>Sphinx: Combining Data and Instruction Level Parallelism through Demand-Driven Execution of Imperative Programs</strong>
+            <span class="fund">NSF CCF-1533828 · XPS: Full · 2015 · with Florida State University · preceded by EAGER award CCF-1450062 (2014)</span>
+            <span>Von Neumann execution does not scale well because communication, synchronization, and naming are hard to scale. Sphinx developed an alternative: programs compiled from ordinary languages are executed in a demand-driven fashion, harvesting both instruction- and data-level parallelism through compiler–architecture collaboration. The key is the Future Gated Single Assignment (FGSA) form, which is at once a representation for the optimizing compiler and the instruction set of the demand-driven machine. Papers supported by Sphinx include <em>Dynamic Memory Dependence Predication</em> (ISCA 2018) and <em>A Two-Phase Recovery Mechanism</em> (ICS 2018).</span>
+            <div><a class="small" href="https://pages.mtu.edu/~soner/nsf/sphinx">Project page</a> · <a class="small" href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1533828" aria-label="NSF award page for Sphinx">NSF award page</a></div>
+          </li>
+          <li id="saa">
+            <strong>Single Assignment Architecture / Single Assignment Compiler</strong>
+            <span class="fund">NSF CCF-1116551 · SHF: Small · 2011</span>
+            <span>Established the single-assignment compiler / single-assignment architecture pairing, including Future Gated Single Assignment form and static single assignment with congruence classes (CGO 2014).</span>
+            <div><a class="small" href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=1116551" aria-label="NSF award page for Single Assignment Architecture">NSF award page</a></div>
+          </li>
+          <li id="career">
+            <strong>Future Values: Reshaping the Future of Instruction Level Parallelism</strong>
+            <span class="fund">NSF CCF-0347592 · CAREER · 2004</span>
+            <span>Program representations and processor mechanisms built on <em>future values</em> — referring to a value before the instruction that produces it — enabling unrestricted code motion and new ways to order instructions (U.S. Patent 7,747,993).</span>
+            <div><a class="small" href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=0347592" aria-label="NSF award page for CAREER: Future Values">NSF award page</a></div>
+          </li>
+          <li id="itr">
+            <strong>Exposing the Compiler to the Hardware: Memory Subsystem Optimizations through Compiler/Micro-architecture Cooperation using Set Membership Information and Color Sets</strong>
+            <span class="fund">NSF CCF-0312892 · ITR · 2003 · with Steven Carr</span>
+            <span>Compiler-directed memory subsystem optimization: reuse-distance and store-distance analysis, feedback-directed memory disambiguation, and color-set-based memory dependence prediction.</span>
+            <div><a class="small" href="https://www.nsf.gov/awardsearch/show-award/?AWD_ID=0312892" aria-label="NSF award page for ITR: Exposing the Compiler to the Hardware">NSF award page</a></div>
+          </li>
+          <li id="darpa">
+            <strong>Power-Adaptive Microarchitecture and Compiler Design for Mobile Computing</strong>
+            <span class="fund">DARPA Power Aware Computing/Communications Program · F29601-00-1-0183 · 2000 – 2002</span>
+            <span>Compiler and microarchitecture techniques for reducing static and dynamic power in superscalar processors, including optimizing static power dissipation by functional units.</span>
+          </li>
+        </ul>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">
+            <img src="assets/img/logo-160.png" alt="" width="169" height="160">
+            <div><strong>SCIA</strong><br><span class="small muted">Computer Architecture Lab<br>Michigan Technological University</span></div>
+          </div>
+        </div>
+        <div>
+          <h2>Site</h2>
+          <ul>
+            <li><a href="people.html">People</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="publications.html">Publications</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Michigan Tech</h2>
+          <ul>
+            <li><a href="https://www.mtu.edu/cs/">Department of Computer Science</a></li>
+            <li><a href="https://www.mtu.edu/cs/department/people/faculty/s-onder/">Prof. Önder — faculty page</a></li>
+            <li><a href="https://pages.mtu.edu/~soner/">Prof. Önder — personal site</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul>
+            <li>Lab: 316 Rekhi Hall</li>
+            <li>Prof. Önder: 303 Rekhi Hall</li>
+            <li>1400 Townsend Drive</li>
+            <li>Houghton, MI 49931</li>
+            <li><a href="mailto:soner@mtu.edu">soner@mtu.edu</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 SCIence in Architecture, Michigan Technological University</span>
+        <span>Supported by NSF awards CCF-2211353, CCF-1901005, and OISE-2103105.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js" defer></script>
+</body>
+</html>
