@@ -1,0 +1,632 @@
+[
+  {
+    "year": 2026,
+    "type": "conference",
+    "title": "Can Fine-Grain Multi-threading Subsume VLIW?",
+    "authors": [
+      "Scott Pomerville",
+      "Soner Önder",
+      "Gang-Ryung Uh",
+      "David Whalley"
+    ],
+    "abbr": "LCTES 2026",
+    "pages": "129–141",
+    "venue": "Proceedings of the 27th ACM SIGPLAN/SIGBED International Conference on Languages, Compilers, and Tools for Embedded Systems",
+    "doi": "10.1145/3814943.3816179"
+  },
+  {
+    "year": 2024,
+    "type": "thesis",
+    "title": "Statically Controlled Synchronized Lane Architectures",
+    "authors": [
+      "Scott Pomerville"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University",
+    "links": [
+      {
+        "label": "Thesis",
+        "url": "https://digitalcommons.mtu.edu/etdr/1811/"
+      }
+    ]
+  },
+  {
+    "year": 2023,
+    "type": "conference",
+    "title": "Facilitating the Bootstrapping of a New ISA",
+    "authors": [
+      "Abigail Mortensen",
+      "Scott Pomerville",
+      "David Whalley",
+      "Soner Önder",
+      "Gang-Ryung Uh"
+    ],
+    "abbr": "LCTES 2023",
+    "pages": "2–12",
+    "venue": "Proceedings of the 24th ACM SIGPLAN/SIGBED International Conference on Languages, Compilers, and Tools for Embedded Systems",
+    "doi": "10.1145/3589610.3596282"
+  },
+  {
+    "year": 2021,
+    "type": "journal",
+    "title": "Decreasing the Miss Rate and Eliminating the Performance Penalty of a Data Filter Cache",
+    "authors": [
+      "Michael Stokes",
+      "David Whalley",
+      "Soner Önder"
+    ],
+    "abbr": "ACM TACO",
+    "pages": "1–22",
+    "venue": "ACM Transactions on Architecture and Code Optimization, vol. 18, no. 3",
+    "doi": "10.1145/3449043"
+  },
+  {
+    "year": 2020,
+    "type": "thesis",
+    "title": "Dynamic Dependency Collapsing",
+    "authors": [
+      "Görkem Aşılıoğlu"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University",
+    "pdf": "https://pages.mtu.edu/~soner/PhD-Thesis/2020-Gorkem-Asilioglu.pdf"
+  },
+  {
+    "year": 2020,
+    "type": "thesis",
+    "title": "Demand-Driven Execution Using Future Gated Single Assignment Form",
+    "authors": [
+      "Omkar Javeri"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University",
+    "pdf": "https://pages.mtu.edu/~soner/PhD-Thesis/2020-Omkar-Javeri.pdf"
+  },
+  {
+    "year": 2019,
+    "type": "conference",
+    "title": "Improving Energy Efficiency by Memoizing Data Access Information",
+    "authors": [
+      "Michael Stokes",
+      "Ryan Baird",
+      "Zhaoxiang Jin",
+      "David Whalley",
+      "Soner Önder"
+    ],
+    "abbr": "ISLPED 2019",
+    "pages": "1–6",
+    "venue": "IEEE/ACM International Symposium on Low Power Electronics and Design",
+    "doi": "10.1109/ISLPED.2019.8824951"
+  },
+  {
+    "year": 2018,
+    "type": "conference",
+    "title": "Dynamic Memory Dependence Predication",
+    "authors": [
+      "Zhaoxiang Jin",
+      "Soner Önder"
+    ],
+    "abbr": "ISCA 2018",
+    "pages": "235–246",
+    "venue": "Proceedings of the 45th Annual International Symposium on Computer Architecture, Los Angeles",
+    "doi": "10.1109/ISCA.2018.00029"
+  },
+  {
+    "year": 2018,
+    "type": "conference",
+    "title": "A Two-Phase Recovery Mechanism",
+    "authors": [
+      "Zhaoxiang Jin",
+      "Soner Önder"
+    ],
+    "abbr": "ICS 2018",
+    "pages": "107–117",
+    "venue": "Proceedings of the 2018 International Conference on Supercomputing, Beijing",
+    "doi": "10.1145/3205289.3205300"
+  },
+  {
+    "year": 2018,
+    "type": "conference",
+    "title": "Decoupling Address Generation from Loads and Stores to Improve Data Access Energy Efficiency",
+    "authors": [
+      "Michael Stokes",
+      "Ryan Baird",
+      "Zhaoxiang Jin",
+      "David Whalley",
+      "Soner Önder"
+    ],
+    "abbr": "LCTES 2018",
+    "pages": "65–75",
+    "venue": "Proceedings of the 19th ACM SIGPLAN/SIGBED International Conference on Languages, Compilers, and Tools for Embedded Systems, Philadelphia",
+    "doi": "10.1145/3211332.3211340"
+  },
+  {
+    "year": 2018,
+    "type": "thesis",
+    "title": "Mitigating the Effect of Misspeculations in Superscalar Processors",
+    "authors": [
+      "Zhaoxiang Jin"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University",
+    "pdf": "https://pages.mtu.edu/~soner/PhD-Thesis/2018-Zhaoxiang-Jin.pdf"
+  },
+  {
+    "year": 2018,
+    "type": "report",
+    "title": "Demand Driven Execution Pipeline",
+    "authors": [
+      "Omkar Javeri",
+      "Tino Moore",
+      "Soner Önder"
+    ],
+    "abbr": "Technical report",
+    "venue": "Michigan Technological University"
+  },
+  {
+    "year": 2015,
+    "type": "conference",
+    "title": "LaZy Superscalar",
+    "authors": [
+      "Görkem Aşılıoğlu",
+      "Zhaoxiang Jin",
+      "Murat Köksal",
+      "Omkar Javeri",
+      "Soner Önder"
+    ],
+    "abbr": "ISCA 2015",
+    "pages": "260–271",
+    "venue": "Proceedings of the 42nd Annual International Symposium on Computer Architecture, Portland",
+    "doi": "10.1145/2749469.2750409"
+  },
+  {
+    "year": 2015,
+    "type": "conference",
+    "title": "Mower: A New Design for Non-blocking Misprediction Recovery",
+    "authors": [
+      "Zhaoxiang Jin",
+      "Görkem Aşılıoğlu",
+      "Soner Önder"
+    ],
+    "abbr": "ICS 2015",
+    "pages": "285–294",
+    "venue": "Proceedings of the 29th ACM International Conference on Supercomputing, Newport Beach",
+    "doi": "10.1145/2751205.2751228"
+  },
+  {
+    "year": 2014,
+    "type": "conference",
+    "title": "Verifying Micro-architecture Simulators Using Event Traces",
+    "authors": [
+      "Hui Meen Nyew",
+      "Nilufer Onder",
+      "Soner Önder",
+      "Zhenlin Wang"
+    ],
+    "abbr": "ICS 2014",
+    "pages": "323–332",
+    "venue": "Proceedings of the 28th ACM International Conference on Supercomputing, Munich",
+    "doi": "10.1145/2597652.2597680"
+  },
+  {
+    "year": 2014,
+    "type": "conference",
+    "title": "Single Assignment Compiler, Single Assignment Architecture: Future Gated Single Assignment Form; Static Single Assignment with Congruence Classes",
+    "authors": [
+      "Shuhan Ding",
+      "John Earnest",
+      "Soner Önder"
+    ],
+    "abbr": "CGO 2014",
+    "pages": "196–207",
+    "venue": "Proceedings of the IEEE/ACM International Symposium on Code Generation and Optimization, Orlando",
+    "doi": "10.1145/2544137.2544158"
+  },
+  {
+    "year": 2014,
+    "type": "thesis",
+    "title": "Mining and Verification of Temporal Events with Applications in Computer Micro-Architecture Research",
+    "authors": [
+      "Hui Meen Nyew"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University (co-advised with Nilufer Onder)",
+    "links": [
+      {
+        "label": "Thesis",
+        "url": "https://digitalcommons.mtu.edu/etds/796/"
+      }
+    ]
+  },
+  {
+    "year": 2013,
+    "type": "conference",
+    "title": "A First-Order Logic Based Framework for Verifying Simulations",
+    "authors": [
+      "Hui Meen Nyew",
+      "Nilufer Onder",
+      "Soner Önder",
+      "Zhenlin Wang"
+    ],
+    "abbr": "AAAI 2013",
+    "venue": "Proceedings of the 27th AAAI Conference on Artificial Intelligence",
+    "doi": "10.1609/aaai.v27i1.8540"
+  },
+  {
+    "year": 2012,
+    "type": "thesis",
+    "title": "Future Value Based Single Assignment Program Representations and Optimizations",
+    "authors": [
+      "Shuhan Ding"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University",
+    "pdf": "https://pages.mtu.edu/~soner/PhD-Thesis/2012-Shuhan-Ding.pdf",
+    "links": [
+      {
+        "label": "Thesis",
+        "url": "https://digitalcommons.mtu.edu/etds/177/"
+      }
+    ]
+  },
+  {
+    "year": 2011,
+    "type": "chapter",
+    "title": "Discovering Patterns for Architecture Simulation by Using Sequence Mining",
+    "authors": [
+      "Pinar Senkul",
+      "Nilufer Onder",
+      "Soner Önder",
+      "Engin Maden",
+      "Hui Meen Nyew"
+    ],
+    "abbr": "Book chapter",
+    "venue": "In Pattern Discovery Using Sequence Data Mining: Applications and Studies (P. Kumar, P. Radha Krishna, S. Bapi Raju, eds.), IGI Global",
+    "doi": "10.4018/978-1-61350-056-9.ch013"
+  },
+  {
+    "year": 2010,
+    "type": "conference",
+    "title": "Unrestricted Code Motion: A Program Representation and Transformation Algorithms Based on Future Values",
+    "authors": [
+      "Shuhan Ding",
+      "Soner Önder"
+    ],
+    "abbr": "CC 2010",
+    "pages": "26–45",
+    "venue": "Compiler Construction, LNCS 6011, Springer, Paphos",
+    "doi": "10.1007/978-3-642-11970-5_3",
+    "pdf": "https://pages.mtu.edu/~soner/publications/cc-2010.pdf"
+  },
+  {
+    "year": 2010,
+    "type": "patent",
+    "title": "Methods and Systems for Ordering Instructions Using Future Values",
+    "authors": [
+      "Soner Önder"
+    ],
+    "abbr": "U.S. Patent 7,747,993",
+    "venue": "Filed Dec 30, 2004; issued Jun 29, 2010",
+    "links": [
+      {
+        "label": "Google Patents",
+        "url": "https://patents.google.com/patent/US7747993B2/en"
+      }
+    ]
+  },
+  {
+    "year": 2009,
+    "type": "thesis",
+    "title": "Fine-Grain State Processors",
+    "authors": [
+      "Peng Zhou"
+    ],
+    "abbr": "Ph.D. thesis",
+    "venue": "Michigan Technological University",
+    "pdf": "https://pages.mtu.edu/~soner/PhD-Thesis/2009-Peng-Zhou.pdf"
+  },
+  {
+    "year": 2008,
+    "type": "conference",
+    "title": "Improving Single-Thread Performance with Fine-Grain State Maintenance",
+    "authors": [
+      "Peng Zhou",
+      "Soner Önder"
+    ],
+    "abbr": "CF 2008",
+    "pages": "251–260",
+    "venue": "Proceedings of the 5th ACM Conference on Computing Frontiers, Ischia",
+    "doi": "10.1145/1366230.1366274",
+    "pdf": "https://pages.mtu.edu/~soner/publications/cf-2008.pdf"
+  },
+  {
+    "year": 2008,
+    "type": "chapter",
+    "title": "ADL++: Object-Oriented Specification of Complicated Instruction Sets and Microarchitectures",
+    "authors": [
+      "Soner Önder"
+    ],
+    "abbr": "Book chapter",
+    "pages": "247–274",
+    "venue": "In Processor Description Languages (P. Mishra and N. Dutt, eds.), Morgan Kaufmann, chapter 10",
+    "doi": "10.1016/B978-012374287-2.50013-6"
+  },
+  {
+    "year": 2006,
+    "type": "conference",
+    "title": "Feedback-Directed Memory Disambiguation Through Store Distance Analysis",
+    "authors": [
+      "Changpeng Fang",
+      "Steve Carr",
+      "Soner Önder",
+      "Zhenlin Wang"
+    ],
+    "abbr": "ICS 2006",
+    "pages": "278–287",
+    "venue": "Proceedings of the 20th ACM International Conference on Supercomputing, Cairns",
+    "doi": "10.1145/1183401.1183440",
+    "pdf": "https://pages.mtu.edu/~soner/publications/ics-2006.pdf"
+  },
+  {
+    "year": 2006,
+    "type": "conference",
+    "title": "Path-Based Reuse Distance Analysis",
+    "authors": [
+      "Changpeng Fang",
+      "Steve Carr",
+      "Soner Önder",
+      "Zhenlin Wang"
+    ],
+    "abbr": "CC 2006",
+    "pages": "32–46",
+    "venue": "Compiler Construction, LNCS 3923, Springer, Vienna",
+    "doi": "10.1007/11688839_4",
+    "pdf": "https://pages.mtu.edu/~soner/publications/cc-2006.pdf"
+  },
+  {
+    "year": 2005,
+    "type": "conference",
+    "title": "Instruction Based Memory Distance Analysis and Its Application to Optimization",
+    "authors": [
+      "Changpeng Fang",
+      "Steve Carr",
+      "Soner Önder",
+      "Zhenlin Wang"
+    ],
+    "abbr": "PACT 2005",
+    "pages": "27–37",
+    "venue": "14th International Conference on Parallel Architectures and Compilation Techniques, St. Louis",
+    "doi": "10.1109/PACT.2005.26",
+    "pdf": "https://pages.mtu.edu/~soner/publications/pact-2005.pdf"
+  },
+  {
+    "year": 2005,
+    "type": "conference",
+    "title": "Fast Branch Misprediction Recovery in Out-of-Order Superscalar Processors",
+    "authors": [
+      "Peng Zhou",
+      "Soner Önder",
+      "Steve Carr"
+    ],
+    "abbr": "ICS 2005",
+    "pages": "41–50",
+    "venue": "Proceedings of the 19th ACM International Conference on Supercomputing, Boston",
+    "doi": "10.1145/1088149.1088156",
+    "pdf": "https://pages.mtu.edu/~soner/publications/ics-2005.pdf"
+  },
+  {
+    "year": 2005,
+    "type": "conference",
+    "title": "A Case for a Working-Set-Based Memory Hierarchy",
+    "authors": [
+      "Steve Carr",
+      "Soner Önder"
+    ],
+    "abbr": "CF 2005",
+    "pages": "252–261",
+    "venue": "Proceedings of the 2nd ACM Conference on Computing Frontiers, Ischia",
+    "doi": "10.1145/1062261.1062304",
+    "pdf": "https://pages.mtu.edu/~soner/publications/cf-2005.pdf"
+  },
+  {
+    "year": 2005,
+    "type": "chapter",
+    "title": "Specification of Intel IA-32 Using an Architecture Description Language",
+    "authors": [
+      "Jeff Bastian",
+      "Soner Önder"
+    ],
+    "abbr": "Book chapter",
+    "pages": "151–166",
+    "venue": "In Architecture Description Languages, IFIP vol. 176, Springer",
+    "doi": "10.1007/0-387-24590-1_10",
+    "pdf": "https://pages.mtu.edu/~soner/publications/wadl-2004.pdf"
+  },
+  {
+    "year": 2004,
+    "type": "conference",
+    "title": "Reuse-Distance-Based Miss-Rate Prediction on a Per Instruction Basis",
+    "authors": [
+      "Changpeng Fang",
+      "Steve Carr",
+      "Soner Önder",
+      "Zhenlin Wang"
+    ],
+    "abbr": "MSP 2004",
+    "pages": "60–68",
+    "venue": "Proceedings of the 2004 ACM Workshop on Memory System Performance, Washington, DC",
+    "doi": "10.1145/1065895.1065906",
+    "pdf": "https://pages.mtu.edu/~soner/publications/msp-2004.pdf"
+  },
+  {
+    "year": 2002,
+    "type": "conference",
+    "title": "Cost Effective Memory Dependence Prediction Using Speculation Levels and Color Sets",
+    "authors": [
+      "Soner Önder"
+    ],
+    "abbr": "PACT 2002",
+    "pages": "232–241",
+    "venue": "International Conference on Parallel Architectures and Compilation Techniques, Charlottesville",
+    "doi": "10.1109/PACT.2002.1106021",
+    "pdf": "https://pages.mtu.edu/~soner/publications/pact-2002.pdf"
+  },
+  {
+    "year": 2002,
+    "type": "conference",
+    "title": "Optimizing Static Power Dissipation by Functional Units in Superscalar Processors",
+    "authors": [
+      "Siddharth Rele",
+      "Santosh Pande",
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "CC 2002",
+    "pages": "85–100",
+    "venue": "Compiler Construction, LNCS 2304, Springer, Grenoble",
+    "doi": "10.1007/3-540-45937-5_19",
+    "pdf": "https://pages.mtu.edu/~soner/publications/cc-2002.pdf"
+  },
+  {
+    "year": 2002,
+    "type": "journal",
+    "title": "Dynamic Memory Disambiguation in the Presence of Out-of-Order Store Issuing",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "JILP",
+    "venue": "Journal of Instruction-Level Parallelism, vol. 4",
+    "pdf": "https://pages.mtu.edu/~soner/publications/jilp-2002.pdf",
+    "links": [
+      {
+        "label": "Journal",
+        "url": "http://www.jilp.org/vol4/v4paper1.pdf"
+      }
+    ]
+  },
+  {
+    "year": 2001,
+    "type": "conference",
+    "title": "Load and Store Reuse Using Register File Contents",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "ICS 2001",
+    "pages": "289–302",
+    "venue": "Proceedings of the 15th ACM International Conference on Supercomputing, Naples",
+    "doi": "10.1145/377792.377850",
+    "pdf": "https://pages.mtu.edu/~soner/publications/ics-2001.pdf"
+  },
+  {
+    "year": 2001,
+    "type": "conference",
+    "title": "Instruction Wake-Up in Wide Issue Superscalars",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "Euro-Par 2001",
+    "pages": "418–427",
+    "venue": "Euro-Par 2001 Parallel Processing, LNCS 2150, Springer, Manchester",
+    "doi": "10.1007/3-540-44681-8_61",
+    "pdf": "https://pages.mtu.edu/~soner/publications/europar-2001.pdf"
+  },
+  {
+    "year": 2001,
+    "type": "chapter",
+    "title": "Improving Software Pipelining by Hiding Memory Latency with Combined Loads and Prefetches",
+    "authors": [
+      "Michael Bedy",
+      "Steve Carr",
+      "Soner Önder",
+      "Philip Sweany"
+    ],
+    "abbr": "Book chapter",
+    "pages": "69–88",
+    "venue": "In Interaction between Compilers and Computer Architectures (G. Lee and P.-C. Yew, eds.), Kluwer Academic Publishers",
+    "doi": "10.1007/978-1-4757-3337-2_4",
+    "pdf": "https://pages.mtu.edu/~soner/publications/interact-2001.pdf"
+  },
+  {
+    "year": 1999,
+    "type": "conference",
+    "title": "Caching and Predicting Branch Sequences for Improved Fetch Effectiveness",
+    "authors": [
+      "Soner Önder",
+      "Jun Xu",
+      "Rajiv Gupta"
+    ],
+    "abbr": "PACT 1999",
+    "venue": "International Conference on Parallel Architectures and Compilation Techniques, Newport Beach",
+    "pdf": "https://pages.mtu.edu/~soner/publications/pact-1999.pdf",
+    "links": [
+      {
+        "label": "ACM DL",
+        "url": "https://dl.acm.org/doi/10.5555/520793.825730"
+      }
+    ]
+  },
+  {
+    "year": 1999,
+    "type": "conference",
+    "title": "Dynamic Memory Disambiguation in the Presence of Out-of-Order Store Issuing",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "MICRO-32",
+    "pages": "170–176",
+    "venue": "Proceedings of the 32nd Annual ACM/IEEE International Symposium on Microarchitecture, Haifa",
+    "doi": "10.1109/MICRO.1999.809454",
+    "pdf": "https://pages.mtu.edu/~soner/publications/micro-1999.pdf"
+  },
+  {
+    "year": 1998,
+    "type": "conference",
+    "title": "Superscalar Execution with Dynamic Data Forwarding",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "PACT 1998",
+    "pages": "130–135",
+    "venue": "International Conference on Parallel Architectures and Compilation Techniques, Paris",
+    "doi": "10.1109/PACT.1998.727183",
+    "pdf": "https://pages.mtu.edu/~soner/publications/pact-1998.pdf"
+  },
+  {
+    "year": 1998,
+    "type": "conference",
+    "title": "Automatic Generation of Microarchitecture Simulators",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "ICCL 1998",
+    "pages": "80–89",
+    "venue": "IEEE International Conference on Computer Languages, Chicago",
+    "doi": "10.1109/ICCL.1998.674159",
+    "pdf": "https://pages.mtu.edu/~soner/publications/iccl-1998.pdf",
+    "links": [
+      {
+        "label": "Extended version (PDF)",
+        "url": "https://pages.mtu.edu/~soner/publications/iccl-1998-long.pdf"
+      }
+    ]
+  },
+  {
+    "year": 1995,
+    "type": "conference",
+    "title": "SINAN: A Forwarding Multithreaded Architecture",
+    "authors": [
+      "Soner Önder",
+      "Rajiv Gupta"
+    ],
+    "abbr": "HiPC 1995",
+    "pages": "347–354",
+    "venue": "International Conference on High Performance Computing, New Delhi",
+    "pdf": "https://pages.mtu.edu/~soner/publications/hipc-1995.pdf"
+  }
+]

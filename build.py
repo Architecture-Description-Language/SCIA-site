@@ -1,0 +1,124 @@
+#!/usr/bin/env python3
+"""Build the SCIA site: src/pages/*.html + src/layout.html -> ./*.html
+and src/data/publications.json -> the publication list + publications.bib.
+
+    python3 build.py
+
+No dependencies. Each page in src/pages/ starts with a comment block of
+`key: value` lines (title, description, nav) followed by the page body,
+which is dropped into <main> of src/layout.html. A page may contain the
+placeholders {{publications}}, {{year_nav}} and {{pub_count}}.
+"""
+import datetime, json, os, re, sys, unicodedata
+
+ROOT = os.path.dirname(os.path.abspath(__file__))
+SRC = os.path.join(ROOT, 'src')
+NAV = [('people', 'People', 'people.html'),
+       ('projects', 'Projects', 'projects.html'),
+       ('publications', 'Publications', 'publications.html')]
+SITE = 'SCIA — SCIence in Architecture'
+
+def e(s):
+    return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+
+# ---------------------------------------------------------------- publications
+def pub_html(p):
+    doi = p.get('doi')
+    links = p.get('links', [])
+    primary = ('https://doi.org/' + doi) if doi else (links[0]['url'] if links else p.get('pdf'))
+    title = (f'<a class="title" href="{e(primary)}">{e(p["title"])}</a>' if primary
+             else f'<span class="title">{e(p["title"])}</span>')
+    venue = f'<span class="abbr">{e(p["abbr"])}</span> · {e(p["venue"])}'
+    if p.get('pages'):
+        venue += f', pp. {e(p["pages"])}'
+    pills = []
+    if doi:
+        pills.append(f'<a href="https://doi.org/{e(doi)}">DOI</a>')
+    pills += [f'<a href="{e(l["url"])}">{e(l["label"])}</a>' for l in links]
+    if p.get('pdf'):
+        pills.append(f'<a href="{e(p["pdf"])}">PDF</a>')
+    pills_html = f'\n            <div class="pub-links">{"".join(pills)}</div>' if pills else ''
+    return (f'          <li class="pub" data-type="{e(p["type"])}">\n'
+            f'            {title}\n'
+            f'            <div class="authors">{", ".join(e(a) for a in p["authors"])}</div>\n'
+            f'            <div class="venue">{venue}</div>{pills_html}\n'
+            f'          </li>')
+
+def render_publications(pubs):
+    years = sorted({p['year'] for p in pubs}, reverse=True)
+    groups = []
+    for y in years:
+        items = '\n'.join(pub_html(p) for p in pubs if p['year'] == y)
+        groups.append(f'      <section class="pub-group" id="y{y}" aria-labelledby="h{y}">\n'
+                      f'        <h2 id="h{y}">{y}</h2>\n        <ol>\n{items}\n        </ol>\n      </section>')
+    year_nav = ''.join(f'<li><a href="#y{y}">{y}</a></li>' for y in years)
+    return '\n'.join(groups), year_nav
+
+def bibtex(pubs):
+    def ascii_(s):
+        s = s.translate(str.maketrans('ıİşŞğĞçÇ', 'iIsSgGcC'))
+        return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
+    def key(p):
+        last = ascii_(p['authors'][0].split()[-1])
+        last = re.sub(r'[^A-Za-z]', '', last) or 'Anon'
+        word = re.sub(r'[^A-Za-z]', '', p['title'].split()[0]) or 'x'
+        return f'{last}{p["year"]}{word.lower()}'
+    def f(k, v):
+        return f'  {k} = {{{v}}},\n'
+    out, seen = [], {}
+    for p in pubs:
+        k = key(p); seen[k] = seen.get(k, 0) + 1
+        if seen[k] > 1: k += chr(ord('a') + seen[k] - 1)
+        kind = {'conference': 'inproceedings', 'journal': 'article', 'chapter': 'incollection',
+                'thesis': 'phdthesis', 'report': 'techreport', 'patent': 'misc'}[p['type']]
+        s = f'@{kind}{{{k},\n' + f('title', p['title']) + f('author', ' and '.join(p['authors'])) + f('year', p['year'])
+        if kind == 'inproceedings': s += f('booktitle', p['venue'])
+        elif kind == 'article': s += f('journal', p['venue'])
+        elif kind == 'incollection': s += f('booktitle', re.sub(r'^In ', '', p['venue']))
+        elif kind == 'phdthesis': s += f('school', 'Michigan Technological University')
+        elif kind == 'techreport': s += f('institution', p['venue'])
+        else: s += f('howpublished', p['abbr']) + f('note', p['venue'])
+        if p.get('pages'): s += f('pages', p['pages'].replace('–', '--'))
+        if p.get('doi'): s += f('doi', p['doi'])
+        url = p.get('pdf') or (p['links'][0]['url'] if p.get('links') else None)
+        if url and not p.get('doi'): s += f('url', url)
+        out.append(s.rstrip(',\n') + '\n}\n')
+    return '\n'.join(out)
+
+# ---------------------------------------------------------------- pages
+def parse_page(path):
+    s = open(path, encoding='utf-8').read()
+    m = re.match(r'\s*<!--(.*?)-->\s*\n', s, flags=re.S)
+    if not m:
+        sys.exit(f'{path}: missing front-matter comment block')
+    meta = dict(re.findall(r'^\s*([a-z_]+):\s*(.*?)\s*$', m.group(1), flags=re.M))
+    return meta, s[m.end():].rstrip()
+
+def build():
+    layout = open(os.path.join(SRC, 'layout.html'), encoding='utf-8').read()
+    pubs = json.load(open(os.path.join(SRC, 'data', 'publications.json'), encoding='utf-8'))
+    pubs.sort(key=lambda p: -p['year'])
+    groups_html, year_nav = render_publications(pubs)
+    open(os.path.join(ROOT, 'publications.bib'), 'w', encoding='utf-8').write(bibtex(pubs))
+    year = str(datetime.date.today().year)
+    for name in sorted(os.listdir(os.path.join(SRC, 'pages'))):
+        if not name.endswith('.html'):
+            continue
+        meta, body = parse_page(os.path.join(SRC, 'pages', name))
+        body = (body.replace('{{publications}}', groups_html)
+                    .replace('{{year_nav}}', year_nav)
+                    .replace('{{pub_count}}', str(len(pubs))))
+        nav = '\n'.join('        <li><a href="%s"%s>%s</a></li>' % (href, ' aria-current="page"' if meta.get('nav') == key else '', label)
+                        for key, label, href in NAV)
+        page = (layout.replace('{{title}}', e(meta['title']))
+                      .replace('{{og_title}}', e(meta.get('og_title', meta['title'])))
+                      .replace('{{description}}', e(meta['description']))
+                      .replace('{{nav}}', nav)
+                      .replace('{{year}}', year)
+                      .replace('{{content}}', body))
+        open(os.path.join(ROOT, name), 'w', encoding='utf-8').write(page)
+        print('built', name)
+    print('built publications.bib', f'({len(pubs)} entries)')
+
+if __name__ == '__main__':
+    build()

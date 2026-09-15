@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Publications · SCIA — SCIence in Architecture</title>
   <meta name="description" content="Publications of SCIA, Prof. Soner Önder's computer architecture research group at Michigan Technological University.">
+  <meta property="og:title" content="Publications · SCIA — SCIence in Architecture">
+  <meta property="og:description" content="Publications of SCIA, Prof. Soner Önder's computer architecture research group at Michigan Technological University.">
+  <!-- TODO: once the site has its final URL, add an absolute og:image, e.g.
+       <meta property="og:image" content="https://<host>/<path>/assets/img/photos/meeting-1-1800.jpg"> -->
   <link rel="icon" type="image/png" sizes="32x32" href="assets/img/favicon-32.png">
   <link rel="icon" type="image/png" sizes="64x64" href="assets/img/favicon.png">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -37,6 +41,7 @@
   </header>
 
   <main id="main">
+
     <div class="container">
       <header class="page-head">
         <span class="eyebrow">Publications</span>
@@ -48,8 +53,9 @@
         <label for="pub-search">Filter</label>
         <input type="search" id="pub-search" placeholder="Search by title, author, or venue…" autocomplete="off">
         <span class="muted small" id="pub-count" aria-live="polite"></span>
+        <a class="btn secondary small" href="publications.bib" download>Download BibTeX</a>
       </div>
-      <nav aria-label="Jump to year" style="margin-bottom:8px">
+      <nav class="year-jump" aria-label="Jump to year">
         <ul class="year-nav"><li><a href="#y2026">2026</a></li><li><a href="#y2024">2024</a></li><li><a href="#y2023">2023</a></li><li><a href="#y2021">2021</a></li><li><a href="#y2020">2020</a></li><li><a href="#y2019">2019</a></li><li><a href="#y2018">2018</a></li><li><a href="#y2015">2015</a></li><li><a href="#y2014">2014</a></li><li><a href="#y2013">2013</a></li><li><a href="#y2012">2012</a></li><li><a href="#y2011">2011</a></li><li><a href="#y2010">2010</a></li><li><a href="#y2009">2009</a></li><li><a href="#y2008">2008</a></li><li><a href="#y2006">2006</a></li><li><a href="#y2005">2005</a></li><li><a href="#y2004">2004</a></li><li><a href="#y2002">2002</a></li><li><a href="#y2001">2001</a></li><li><a href="#y1999">1999</a></li><li><a href="#y1998">1998</a></li><li><a href="#y1995">1995</a></li></ul>
       </nav>
 
@@ -156,7 +162,6 @@
             <span class="title">Demand Driven Execution Pipeline</span>
             <div class="authors">Omkar Javeri, Tino Moore, Soner Önder</div>
             <div class="venue"><span class="abbr">Technical report</span> · Michigan Technological University</div>
-            
           </li>
         </ol>
       </section>
@@ -218,8 +223,7 @@
             <a class="title" href="https://digitalcommons.mtu.edu/etds/177/">Future Value Based Single Assignment Program Representations and Optimizations</a>
             <div class="authors">Shuhan Ding</div>
             <div class="venue"><span class="abbr">Ph.D. thesis</span> · Michigan Technological University</div>
-            
-          <div class="pub-links"><a href="https://digitalcommons.mtu.edu/etds/177/">Thesis</a><a href="https://pages.mtu.edu/~soner/PhD-Thesis/2012-Shuhan-Ding.pdf">PDF</a></div>
+            <div class="pub-links"><a href="https://digitalcommons.mtu.edu/etds/177/">Thesis</a><a href="https://pages.mtu.edu/~soner/PhD-Thesis/2012-Shuhan-Ding.pdf">PDF</a></div>
           </li>
         </ol>
       </section>
@@ -258,8 +262,7 @@
             <a class="title" href="https://pages.mtu.edu/~soner/PhD-Thesis/2009-Peng-Zhou.pdf">Fine-Grain State Processors</a>
             <div class="authors">Peng Zhou</div>
             <div class="venue"><span class="abbr">Ph.D. thesis</span> · Michigan Technological University</div>
-            
-          <div class="pub-links"><a href="https://pages.mtu.edu/~soner/PhD-Thesis/2009-Peng-Zhou.pdf">PDF</a></div>
+            <div class="pub-links"><a href="https://pages.mtu.edu/~soner/PhD-Thesis/2009-Peng-Zhou.pdf">PDF</a></div>
           </li>
         </ol>
       </section>
@@ -431,6 +434,7 @@
 
       <p class="no-results" id="pub-no-results" hidden>No publications match that filter.</p>
     </div>
+
   </main>
 
   <footer class="site-footer">
@@ -470,7 +474,7 @@
         </div>
       </div>
       <div class="footer-bottom">
-        <span>© 2026 SCIence in Architecture, Michigan Technological University</span>
+        <span>© 2026 SCIence in Architecture, Michigan Technological University · Rekhi Hall photos by Michigan Tech University Marketing and Communications.</span>
         <span>Supported by NSF awards CCF-2211353, CCF-1901005, and OISE-2103105.</span>
       </div>
     </div>
