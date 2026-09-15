@@ -4,12 +4,19 @@ and src/data/publications.json -> the publication list + publications.bib.
 
     python3 build.py
 
+    python3 build.py --deploy [DEST]   # also copy the site to the web space
+                                       # (default DEST: the Multidrive SCIA-site folder)
+
 No dependencies. Each page in src/pages/ starts with a comment block of
 `key: value` lines (title, description, nav) followed by the page body,
 which is dropped into <main> of src/layout.html. A page may contain the
 placeholders {{publications}}, {{year_nav}} and {{pub_count}}.
+
+--deploy copies only what the pages reference (HTML, .bib, CSS, JS, the
+images actually used) — not src/, tools/, backups/ or the unreferenced
+full-size logo. It refuses to run if DEST's volume is not mounted.
 """
-import datetime, json, os, re, sys, unicodedata
+import datetime, json, os, re, shutil, sys, unicodedata
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SRC = os.path.join(ROOT, 'src')
@@ -120,5 +127,31 @@ def build():
         print('built', name)
     print('built publications.bib', f'({len(pubs)} entries)')
 
+DEPLOY_DEFAULT = '/Volumes/Multidrive/my_web_files/SCIA-site'
+
+def deploy(dest):
+    vol = os.sep.join(dest.split(os.sep)[:3]) if dest.startswith('/Volumes/') else os.path.dirname(dest)
+    if not os.path.isdir(vol):
+        sys.exit(f'deploy: {vol} is not mounted (connect to smb://multidrive.mtu.edu first)')
+    pages = ['index.html', 'people.html', 'projects.html', 'publications.html']
+    files = set(pages) | {'publications.bib'}
+    for pg in pages:
+        s = open(os.path.join(ROOT, pg), encoding='utf-8').read()
+        files |= set(re.findall(r'(?:src|href)="(assets/[^"]+)"', s))
+        files |= {u.strip().split(' ')[0] for ss in re.findall(r'srcset="([^"]+)"', s) for u in ss.split(',')}
+    css = open(os.path.join(ROOT, 'assets', 'css', 'style.css')).read()
+    files |= {'assets/' + u.strip('\'"') for u in re.findall(r'url\(([^)]+)\)', css) if not u.startswith(('http', 'data', '#'))}
+    files = sorted(f for f in files if os.path.exists(os.path.join(ROOT, f)))
+    copied = 0
+    for f in files:
+        src, dst = os.path.join(ROOT, f), os.path.join(dest, f)
+        os.makedirs(os.path.dirname(dst), exist_ok=True)
+        if not os.path.exists(dst) or os.path.getsize(dst) != os.path.getsize(src) or open(src, 'rb').read() != open(dst, 'rb').read():
+            shutil.copy2(src, dst); copied += 1
+    print(f'deploy: {len(files)} files checked, {copied} copied to {dest}')
+
 if __name__ == '__main__':
     build()
+    if '--deploy' in sys.argv:
+        i = sys.argv.index('--deploy')
+        deploy(sys.argv[i + 1] if len(sys.argv) > i + 1 and not sys.argv[i + 1].startswith('-') else DEPLOY_DEFAULT)

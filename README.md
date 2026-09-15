@@ -102,7 +102,17 @@ python3 -m http.server 8765 &
 It checks every page in light and dark schemes at desktop width and inside 320/400 px frames and
 exits non-zero on any axe violation or horizontal overflow.
 
-## Hosting
+## Hosting / deploying
 
-The site is served from Michigan Tech web space. All paths are relative, so it works at any URL;
-only the Google Fonts stylesheet is loaded from outside the site, with system-font fallbacks.
+The site is served from Michigan Tech web space (`/Volumes/Multidrive/my_web_files/SCIA-site/`
+when the Multidrive share is mounted). All paths are relative, so it works at any URL; only the
+Google Fonts stylesheet is loaded from outside the site, with system-font fallbacks.
+
+To publish: mount the share (Finder → Go → Connect to Server → `smb://multidrive.mtu.edu`), then
+
+```sh
+python3 build.py --deploy          # builds, then copies only the referenced files
+```
+
+The share is not reachable from the campus Wi-Fi network (only wired/VPN), so do this on a
+wired connection or with the campus VPN up.
