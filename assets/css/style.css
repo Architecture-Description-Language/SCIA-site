@@ -229,9 +229,11 @@ p { margin: 0 0 1em; }
 }
 .lede { font-size: 1.2rem; color: var(--ink-2); max-width: 62ch; }
 
-.about-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: clamp(24px, 4vw, 48px); align-items: start; }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr); gap: clamp(24px, 4vw, 48px); align-items: stretch; }
 @media (max-width: 840px) { .about-grid { grid-template-columns: 1fr; } }
+.about-text { display: flex; flex-direction: column; }
 .about-text p { max-width: 68ch; }
+.about-text .btn-row { margin-top: auto; padding-top: 12px; }   /* buttons sit on the card's bottom edge */
 .card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
   padding: clamp(18px, 3vw, 28px); box-shadow: var(--shadow);
