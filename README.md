@@ -14,7 +14,7 @@ python3 -m http.server 8765      # then visit http://127.0.0.1:8765/
 
 ```
 index.html            Home: nav, group-photo carousel, About, research themes
-people.html           PI + current doctoral students
+people.html           PI, current doctoral students, and alumni (dissertations + where they are now)
 projects.html         Current and earlier projects (NSF awards, FAST, IRES/NTNU)
 publications.html     Publications by year with a live text filter (?q=… works too)
 assets/css/style.css  All styling; palette tokens at the top (light + dark scheme)
@@ -33,6 +33,10 @@ tools/a11y_audit.py   Accessibility audit (axe-core in headless Firefox) — see
 **Add or change a person** — copy an `<article class="card person">` block in `people.html`,
 add a 340×460 headshot to `assets/img/people/`, and keep `alt="Portrait of …"`. The
 roster follows the *Current Students* column on Prof. Önder's page.
+
+**When someone graduates** — move them to the Alumni section in `people.html`: copy an
+`<li>` in the doctoral list (year, name, dissertation link, `alumni-now` line) or add a name to
+the Master's list, and add the thesis to `publications.html` under its year.
 
 **Add a publication** — add an `<li class="pub">` inside the right `<section class="pub-group" id="yYYYY">`
 in `publications.html` (create the year section and its `year-nav` link if needed). Each entry

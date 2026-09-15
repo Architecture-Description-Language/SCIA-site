@@ -281,6 +281,21 @@ p { margin: 0 0 1em; }
 .person p { font-size: 0.95rem; color: var(--ink-2); margin: 8px 0 0; }
 .person .links { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: 10px; font-size: 0.92rem; }
 
+/* ---------- alumni ---------- */
+.alumni-sub { font-size: 1.05rem; text-transform: uppercase; letter-spacing: 0.08em; font-family: var(--font-sans); color: var(--ink-3); margin: 8px 0 12px; }
+.alumni-list { list-style: none; padding: 0; margin: 0 0 32px; display: grid; gap: 10px; }
+.alumni-list li { display: grid; grid-template-columns: 64px minmax(0, 1fr); gap: 14px; align-items: start; padding: 14px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.alumni-year { font-family: var(--font-serif); font-weight: 700; font-size: 1.15rem; color: var(--brass-strong); padding-top: 1px; }
+.alumni-name { font-family: var(--font-serif); font-weight: 600; font-size: 1.1rem; }
+.alumni-name a { color: inherit; }
+.alumni-thesis { color: var(--ink-2); }
+.alumni-thesis a { color: var(--ink-2); text-decoration-color: var(--line); }
+.alumni-thesis a:hover { color: var(--brass-strong); text-decoration-color: currentColor; }
+.alumni-now { font-size: 0.95rem; color: var(--ink-3); margin-top: 2px; }
+.alumni-ms { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 6px 24px; }
+.alumni-ms li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+@media (max-width: 480px) { .alumni-list li { grid-template-columns: 1fr; gap: 4px; } }
+
 /* ---------- projects ---------- */
 .project { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; }
 .project + .project { margin-top: 20px; }
