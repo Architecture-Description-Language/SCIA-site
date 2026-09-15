@@ -109,7 +109,7 @@ p { margin: 0 0 1em; }
   display: flex; align-items: center; gap: 12px;
   text-decoration: none; color: var(--ink);
 }
-.brand img { height: 52px; width: auto; }
+.brand img { height: 58px; width: auto; }
 .brand-text { display: flex; flex-direction: column; line-height: 1.1; }
 .brand-name { font-family: var(--font-serif); font-weight: 700; font-size: 1.35rem; letter-spacing: 0.02em; }
 .brand-sub { font-size: 0.78rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -240,7 +240,7 @@ p { margin: 0 0 1em; }
 .facts div { display: grid; gap: 2px; }
 .facts dt { font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--ink-3); font-weight: 700; }
 .facts dd { margin: 0; }
-.logo-emblem { width: 140px; margin: 0 auto 16px; }
+.logo-emblem { width: min(250px, 100%); margin: 0 auto 20px; }
 
 .themes { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin-top: 8px; }
 .theme { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
