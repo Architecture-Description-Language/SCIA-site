@@ -24,7 +24,8 @@ build.py                 Assembles the above into the committed index.html, peop
 assets/css/style.css     All styling; palette tokens at the top (light + dark scheme).
 assets/js/main.js        Mobile nav, carousel, publication filter.
 assets/img/              logo-160.png (nav/footer) · logo-600.png/.webp (About card) ·
-                         logo-full.png (full-res source, unused by pages) ·
+                         logo-full.png (full-res badge; built by tools/make_badge.py from the
+                         Gemini render kept outside git in backups/) ·
                          favicon.svg / favicon.ico / apple-touch-icon.png (the chip-medallion icon;
                          medallion.svg is the detailed vector master, icon-512.png a large PNG) ·
                          photos/ (carousel, 1000 px + 1800 px) · people/ (headshots 340×460)
