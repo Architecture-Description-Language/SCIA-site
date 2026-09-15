@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>SCIA</title>
+  <defs>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#e2c27a"/>
+      <stop offset="0.45" stop-color="#b48c3c"/>
+      <stop offset="1" stop-color="#6e5115"/>
+    </linearGradient>
+    <linearGradient id="brassEdge" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#3e2d0c"/>
+      <stop offset="1" stop-color="#8a6720"/>
+    </linearGradient>
+    <radialGradient id="field" cx="0.5" cy="0.4" r="0.7">
+      <stop offset="0" stop-color="#1f2a3a"/>
+      <stop offset="1" stop-color="#0d121a"/>
+    </radialGradient>
+    <linearGradient id="chip" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#6d9be0"/>
+      <stop offset="0.5" stop-color="#3a63a3"/>
+      <stop offset="1" stop-color="#22406e"/>
+    </linearGradient>
+  </defs>
+  <circle cx="256" cy="256" r="250" fill="url(#brassEdge)"/>
+  <circle cx="256" cy="256" r="236" fill="url(#brass)"/>
+  <circle cx="256" cy="256" r="176" fill="url(#field)"/>
+  <g fill="url(#brass)">
+    <rect x="212.0" y="128.0" width="24" height="44" rx="3"/>
+    <rect x="212.0" y="340.0" width="24" height="44" rx="3"/>
+    <rect x="128.0" y="212.0" width="44" height="24" rx="3"/>
+    <rect x="340.0" y="212.0" width="44" height="24" rx="3"/>
+    <rect x="276.0" y="128.0" width="24" height="44" rx="3"/>
+    <rect x="276.0" y="340.0" width="24" height="44" rx="3"/>
+    <rect x="128.0" y="276.0" width="44" height="24" rx="3"/>
+    <rect x="340.0" y="276.0" width="44" height="24" rx="3"/>
+  </g>
+  <rect x="160" y="160" width="192" height="192" rx="20" fill="url(#brass)"/>
+  <rect x="184" y="184" width="144" height="144" rx="14" fill="url(#chip)"/>
+  <rect x="196" y="196" width="120" height="56" rx="8" fill="#ffffff" opacity="0.12"/>
+</svg>
