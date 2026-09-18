@@ -199,7 +199,7 @@
     "title": "Verifying Micro-architecture Simulators Using Event Traces",
     "authors": [
       "Hui Meen Nyew",
-      "Nilufer Onder",
+      "Nilufer Önder",
       "Soner Önder",
       "Zhenlin Wang"
     ],
@@ -230,7 +230,7 @@
       "Hui Meen Nyew"
     ],
     "abbr": "Ph.D. thesis",
-    "venue": "Michigan Technological University (co-advised with Nilufer Onder)",
+    "venue": "Michigan Technological University (co-advised with Nilufer Önder)",
     "links": [
       {
         "label": "Thesis",
@@ -244,7 +244,7 @@
     "title": "A First-Order Logic Based Framework for Verifying Simulations",
     "authors": [
       "Hui Meen Nyew",
-      "Nilufer Onder",
+      "Nilufer Önder",
       "Soner Önder",
       "Zhenlin Wang"
     ],
@@ -275,7 +275,7 @@
     "title": "Discovering Patterns for Architecture Simulation by Using Sequence Mining",
     "authors": [
       "Pinar Senkul",
-      "Nilufer Onder",
+      "Nilufer Önder",
       "Soner Önder",
       "Engin Maden",
       "Hui Meen Nyew"
