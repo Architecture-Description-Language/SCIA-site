@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 favicon-options.png
 backups
+tools/deploy_via_ssh.sh

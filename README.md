@@ -104,29 +104,27 @@ exits non-zero on any axe violation or horizontal overflow.
 
 ## Hosting / deploying
 
-The site is served from Michigan Tech web space (`/Volumes/Multidrive/my_web_files/SCIA-site/`
-when the Multidrive share is mounted). All paths are relative, so it works at any URL; only the
-Google Fonts stylesheet is loaded from outside the site, with system-font fallbacks.
+All paths are relative, so the site works at any URL (site root or a subdirectory); only the
+Google Fonts stylesheet is loaded from outside the site, with system-font fallbacks. It can be
+published in two places:
 
-Two ways to publish:
+**GitHub Pages.** Every push to `main` republishes
+<https://architecture-description-language.github.io/SCIA-site/>. Setup (once, in the repo
+settings): *Pages → Build and deployment → Source: "Deploy from a branch"*, branch `main`,
+folder `/ (root)`; on GitHub's free plan the repository has to be public. The generated `*.html`
+files are committed, so nothing is built on GitHub — run `python3 build.py` and commit its output
+before pushing. The empty `.nojekyll` file tells Pages to serve the files as-is instead of
+running them through Jekyll.
 
-**Without the VPN (from campus Wi-Fi):**
-
-```sh
-tools/deploy_via_ssh.sh            # builds, rsyncs to colossus, pushes with smbclient
-```
-
-The file server is not reachable from the campus Wi-Fi network, but `colossus.it.mtu.edu` is,
-and it can reach the server. The script stages the referenced files, rsyncs them to
-`~/.scia-site-deploy` on colossus (via the `colossusw` SSH host, which pins traffic to Wi-Fi),
-and runs `smbclient` there. The SMB password is read from the Mac Keychain (the entry Finder
-saved for `multidrive.mtu.edu`) and piped over SSH — it is never stored on the server. macOS
-will ask once to allow `security` to read the Keychain item. Pass a different SSH host as the
-first argument (e.g. `tools/deploy_via_ssh.sh colossus` when the VPN is up).
-
-**With the VPN or wired:** mount the share (Finder → Go → Connect to Server →
-`smb://multidrive.mtu.edu`), then
+**Michigan Tech web space** (`/Volumes/Multidrive/my_web_files/SCIA-site/` when the Multidrive
+share is mounted). From the VPN or a wired campus connection, mount the share (Finder → Go →
+Connect to Server → `smb://multidrive.mtu.edu`), then
 
 ```sh
 python3 build.py --deploy          # builds, then copies only the referenced files
 ```
+
+The share is not reachable from the campus Wi-Fi network. For that case there is a local helper,
+`tools/deploy_via_ssh.sh`, which stages the build, rsyncs it to a campus host over SSH and pushes
+it to the share with `smbclient` from there. It is gitignored and kept out of the public
+repository because it names MTU hosts and an account.
