@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Build the SCIA site: src/pages/*.html + src/layout.html -> ./*.html
-and src/data/publications.json -> the publication list + publications.bib.
+and src/data/publications.json -> the publication list + publications.bib,
+plus sitemap.xml and robots.txt for the canonical BASE_URL.
 
     python3 build.py
 
@@ -24,6 +25,9 @@ NAV = [('people', 'People', 'people.html'),
        ('projects', 'Projects', 'projects.html'),
        ('publications', 'Publications', 'publications.html')]
 SITE = 'SCIA — SCIence in Architecture'
+# Where the site officially lives (GitHub Pages): used for <link rel="canonical">, og:url,
+# og:image, sitemap.xml and robots.txt. Index page = the bare base URL.
+BASE_URL = 'https://architecture-description-language.github.io/SCIA-site/'
 
 def e(s):
     return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
@@ -117,10 +121,13 @@ def build():
     groups_html, year_nav = render_publications(pubs)
     open(os.path.join(ROOT, 'publications.bib'), 'w', encoding='utf-8').write(bibtex(pubs))
     year = str(datetime.date.today().year)
+    urls = []
     for name in sorted(os.listdir(os.path.join(SRC, 'pages'))):
         if not name.endswith('.html'):
             continue
         meta, body = parse_page(os.path.join(SRC, 'pages', name))
+        canonical = BASE_URL + ('' if name == 'index.html' else name)
+        urls.append(canonical)
         body = (body.replace('{{publications}}', groups_html)
                     .replace('{{year_nav}}', year_nav)
                     .replace('{{pub_count}}', str(len(pubs))))
@@ -129,12 +136,22 @@ def build():
         page = (layout.replace('{{title}}', e(meta['title']))
                       .replace('{{og_title}}', e(meta.get('og_title', meta['title'])))
                       .replace('{{description}}', e(meta['description']))
+                      .replace('{{canonical}}', canonical)
+                      .replace('{{base_url}}', BASE_URL)
                       .replace('{{nav}}', nav)
                       .replace('{{year}}', year)
                       .replace('{{content}}', body))
         open(os.path.join(ROOT, name), 'w', encoding='utf-8').write(page)
         print('built', name)
     print('built publications.bib', f'({len(pubs)} entries)')
+    # sitemap + robots.txt for search engines (Google Search Console asks for the sitemap URL)
+    sitemap = ('<?xml version="1.0" encoding="UTF-8"?>\n'
+               '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
+               + ''.join(f'  <url><loc>{u}</loc></url>\n' for u in urls) + '</urlset>\n')
+    open(os.path.join(ROOT, 'sitemap.xml'), 'w', encoding='utf-8').write(sitemap)
+    open(os.path.join(ROOT, 'robots.txt'), 'w', encoding='utf-8').write(
+        f'User-agent: *\nAllow: /\nSitemap: {BASE_URL}sitemap.xml\n')
+    print('built sitemap.xml, robots.txt', f'({len(urls)} pages)')
 
 DEPLOY_DEFAULT = '/Volumes/Multidrive/my_web_files/SCIA-site'
 

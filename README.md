@@ -20,7 +20,8 @@ src/pages/*.html         One file per page: a front-matter comment (title, descr
 src/data/publications.json   The publication list. build.py renders it into publications.html
                          (grouped by year, newest first) and into publications.bib.
 build.py                 Assembles the above into the committed index.html, people.html,
-                         projects.html, publications.html and publications.bib.
+                         projects.html, publications.html and publications.bib, plus sitemap.xml
+                         and robots.txt (from BASE_URL, the site's official address).
 assets/css/style.css     All styling; palette tokens at the top (light + dark scheme).
 assets/js/main.js        Mobile nav, carousel, publication filter.
 assets/img/              logo-160.png (nav/footer) · logo-600.png/.webp (About card) ·
@@ -72,7 +73,6 @@ Use `class="crop-lower"` / `crop-bottom` on 4:3 photos to bias the crop toward t
 ## TODO
 
 - Josh Pearlman's research blurb is a placeholder (`people.html`).
-- Set an absolute `og:image` in `src/layout.html` once the final URL is known.
 - Confirm current positions for Zhaoxiang Jin and Shuhan Ding (both from LinkedIn headlines);
   add positions for Hui Meen Nyew and Peng Zhou if known.
 
@@ -104,20 +104,22 @@ exits non-zero on any axe violation or horizontal overflow.
 
 ## Hosting / deploying
 
-All paths are relative, so the site works at any URL (site root or a subdirectory). The only
-things loaded from outside the site are the Google Fonts stylesheet (with system-font fallbacks)
-and the GoatCounter analytics script (see below). It can be published in two places:
+The site lives on **GitHub Pages**: every push to `main` republishes
+<https://architecture-description-language.github.io/SCIA-site/> within a minute. Setup (once, in
+the repo settings): *Pages → Build and deployment → Source: "Deploy from a branch"*, branch `main`,
+folder `/ (root)`; on GitHub's free plan the repository has to be public. The generated files are
+committed, so nothing is built on GitHub — run `python3 build.py` and commit its output before
+pushing. The empty `.nojekyll` file tells Pages to serve the files as-is instead of running them
+through Jekyll. If the address ever changes, update `BASE_URL` in `build.py` (it feeds
+`<link rel="canonical">`, `og:url`, `og:image`, `sitemap.xml` and `robots.txt`) and rebuild.
 
-**GitHub Pages.** Every push to `main` republishes
-<https://architecture-description-language.github.io/SCIA-site/>. Setup (once, in the repo
-settings): *Pages → Build and deployment → Source: "Deploy from a branch"*, branch `main`,
-folder `/ (root)`; on GitHub's free plan the repository has to be public. The generated `*.html`
-files are committed, so nothing is built on GitHub — run `python3 build.py` and commit its output
-before pushing. The empty `.nojekyll` file tells Pages to serve the files as-is instead of
-running them through Jekyll.
+All paths in the pages are relative, so the site also works at any other URL (site root or a
+subdirectory). The only things loaded from outside the site are the Google Fonts stylesheet
+(with system-font fallbacks) and the GoatCounter analytics script (see below).
 
 **Michigan Tech web space** (`/Volumes/Multidrive/my_web_files/SCIA-site/` when the Multidrive
-share is mounted). From the VPN or a wired campus connection, mount the share (Finder → Go →
+share is mounted) is an optional extra copy and is being retired in favour of GitHub Pages.
+To publish there from the VPN or a wired campus connection, mount the share (Finder → Go →
 Connect to Server → `smb://multidrive.mtu.edu`), then
 
 ```sh
@@ -148,8 +150,10 @@ the bottom of `src/layout.html`.
   *Settings → Site settings → "Allow using the visitor counter"* to be enabled in GoatCounter;
   until then the footer element simply stays hidden.
 
-**Google Search Console** (which searches lead people here): add each URL of the site as a
-*URL-prefix* property at <https://search.google.com/search-console>, choose the **HTML tag**
-verification method, and paste the `<meta name="google-site-verification" …>` line into
-`src/layout.html` where the TODO comment is; one tag verifies every property of that Google
-account. Rebuild, publish, then press *Verify*.
+**Google Search Console** (which searches lead people here, and how Google indexes the pages):
+<https://search.google.com/search-console>, property
+`https://architecture-description-language.github.io/SCIA-site/`. The account's HTML-tag
+verification `<meta name="google-site-verification">` is in `src/layout.html`, and the sitemap
+to submit is `https://architecture-description-language.github.io/SCIA-site/sitemap.xml`.
+To give another Google account access, use *Settings → Users and permissions* there rather
+than adding a second verification tag.
