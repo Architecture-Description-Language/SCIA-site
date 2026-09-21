@@ -146,6 +146,7 @@ p { margin: 0 0 1em; }
 .hero-tagline { margin: 0; color: var(--ink-2); font-size: 1.1rem; max-width: 64ch; }
 .slide img.crop-lower { object-position: center 65%; }
 .slide img.crop-bottom { object-position: center 80%; }
+.slide img.crop-left { object-position: 25% center; }   /* wide panoramas: keep the left-of-centre subject */
 .carousel {
   position: relative; border-radius: var(--radius-lg); overflow: hidden;
   background: var(--surface-2); box-shadow: var(--shadow);
