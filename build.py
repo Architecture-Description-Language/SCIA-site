@@ -29,21 +29,24 @@ def e(s):
     return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
 
 # ---------------------------------------------------------------- publications
-def pub_html(p):
+def pub_html(p, key):
     doi = p.get('doi')
     links = p.get('links', [])
     primary = ('https://doi.org/' + doi) if doi else (links[0]['url'] if links else p.get('pdf'))
-    title = (f'<a class="title" href="{e(primary)}">{e(p["title"])}</a>' if primary
+    # Every outbound link of an entry counts as the GoatCounter event "paper/<key>"
+    # (see the analytics note in src/layout.html), so the dashboard shows which papers get opened.
+    track = f' data-goatcounter-click="paper/{e(key)}" data-goatcounter-title="{e(p["title"])}"'
+    title = (f'<a class="title" href="{e(primary)}"{track}>{e(p["title"])}</a>' if primary
              else f'<span class="title">{e(p["title"])}</span>')
     venue = f'<span class="abbr">{e(p["abbr"])}</span> · {e(p["venue"])}'
     if p.get('pages'):
         venue += f', pp. {e(p["pages"])}'
     pills = []
     if doi:
-        pills.append(f'<a href="https://doi.org/{e(doi)}">DOI</a>')
-    pills += [f'<a href="{e(l["url"])}">{e(l["label"])}</a>' for l in links]
+        pills.append(f'<a href="https://doi.org/{e(doi)}"{track}>DOI</a>')
+    pills += [f'<a href="{e(l["url"])}"{track}>{e(l["label"])}</a>' for l in links]
     if p.get('pdf'):
-        pills.append(f'<a href="{e(p["pdf"])}">PDF</a>')
+        pills.append(f'<a href="{e(p["pdf"])}"{track}>PDF</a>')
     pills_html = f'\n            <div class="pub-links">{"".join(pills)}</div>' if pills else ''
     return (f'          <li class="pub" data-type="{e(p["type"])}">\n'
             f'            {title}\n'
@@ -53,29 +56,35 @@ def pub_html(p):
 
 def render_publications(pubs):
     years = sorted({p['year'] for p in pubs}, reverse=True)
+    keyed = list(zip(pubs, cite_keys(pubs)))
     groups = []
     for y in years:
-        items = '\n'.join(pub_html(p) for p in pubs if p['year'] == y)
+        items = '\n'.join(pub_html(p, k) for p, k in keyed if p['year'] == y)
         groups.append(f'      <section class="pub-group" id="y{y}" aria-labelledby="h{y}">\n'
                       f'        <h2 id="h{y}">{y}</h2>\n        <ol>\n{items}\n        </ol>\n      </section>')
     year_nav = ''.join(f'<li><a href="#y{y}">{y}</a></li>' for y in years)
     return '\n'.join(groups), year_nav
 
-def bibtex(pubs):
+def cite_keys(pubs):
+    """One key per entry, e.g. Onder2026title (first author, year, first title word), made
+    unique with a/b/c suffixes. Used for BibTeX keys and to name the paper click events."""
     def ascii_(s):
         s = s.translate(str.maketrans('ıİşŞğĞçÇ', 'iIsSgGcC'))
         return unicodedata.normalize('NFKD', s).encode('ascii', 'ignore').decode()
-    def key(p):
-        last = ascii_(p['authors'][0].split()[-1])
-        last = re.sub(r'[^A-Za-z]', '', last) or 'Anon'
+    keys, seen = [], {}
+    for p in pubs:
+        last = re.sub(r'[^A-Za-z]', '', ascii_(p['authors'][0].split()[-1])) or 'Anon'
         word = re.sub(r'[^A-Za-z]', '', p['title'].split()[0]) or 'x'
-        return f'{last}{p["year"]}{word.lower()}'
+        k = f'{last}{p["year"]}{word.lower()}'
+        seen[k] = seen.get(k, 0) + 1
+        keys.append(k + (chr(ord('a') + seen[k] - 1) if seen[k] > 1 else ''))
+    return keys
+
+def bibtex(pubs):
     def f(k, v):
         return f'  {k} = {{{v}}},\n'
-    out, seen = [], {}
-    for p in pubs:
-        k = key(p); seen[k] = seen.get(k, 0) + 1
-        if seen[k] > 1: k += chr(ord('a') + seen[k] - 1)
+    out = []
+    for p, k in zip(pubs, cite_keys(pubs)):
         kind = {'conference': 'inproceedings', 'journal': 'article', 'chapter': 'incollection',
                 'thesis': 'phdthesis', 'report': 'techreport', 'patent': 'misc'}[p['type']]
         s = f'@{kind}{{{k},\n' + f('title', p['title']) + f('author', ' and '.join(p['authors'])) + f('year', p['year'])

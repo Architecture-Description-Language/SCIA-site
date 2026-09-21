@@ -9,6 +9,8 @@
   <meta property="og:description" content="Current and past research projects of SCIA, Prof. Soner Önder's computer architecture group at Michigan Tech: Vectorized Instruction Space, SCALE, Sphinx, FAST, and more.">
   <!-- TODO: once the site has its final URL, add an absolute og:image, e.g.
        <meta property="og:image" content="https://<host>/<path>/assets/img/photos/meeting-1-1800.jpg"> -->
+  <!-- TODO: Google Search Console — paste the "HTML tag" verification line here, e.g.
+       <meta name="google-site-verification" content="..."> (one tag covers every property of that Google account) -->
   <link rel="icon" href="assets/img/favicon.ico" sizes="16x16 32x32 48x48">
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
   <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
@@ -190,10 +192,30 @@
       <div class="footer-bottom">
         <span>© 2026 SCIence in Architecture, Michigan Technological University · Rekhi Hall photos by Michigan Tech University Marketing and Communications.</span>
         <span>Supported by NSF awards CCF-2211353, CCF-1901005, and OISE-2103105.</span>
+        <!-- filled in by main.js from the GoatCounter visitor counter; stays hidden if that fails -->
+        <span class="visit-counter" id="visit-counter" hidden>
+          <span class="visually-hidden" id="visit-counter-text"></span>
+          <span aria-hidden="true">Visits <span class="counter-digits"></span></span>
+        </span>
       </div>
     </div>
   </footer>
 
   <script src="assets/js/main.js" defer></script>
+  <!-- Analytics: GoatCounter (dashboard: https://scia.goatcounter.com). No cookies and no
+       personal data — IP addresses are hashed with a daily salt and discarded. Page views are
+       recorded as /mtu/<page> or /gh/<page> so the Michigan Tech and GitHub Pages copies can
+       be told apart; localhost and file:// previews are not counted. Any element with
+       data-goatcounter-click="<name>" is counted as an event when clicked. -->
+  <script>
+    window.goatcounter = {
+      path: function () {
+        var h = location.hostname;
+        var site = /\.github\.io$/.test(h) ? 'gh' : /\.mtu\.edu$/.test(h) ? 'mtu' : h;
+        return '/' + site + '/' + (location.pathname.replace(/^.*\//, '') || 'index.html');
+      }
+    };
+  </script>
+  <script data-goatcounter="https://scia.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </body>
 </html>

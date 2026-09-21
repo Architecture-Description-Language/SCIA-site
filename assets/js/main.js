@@ -137,4 +137,30 @@
     var m = /[?&]q=([^&]*)/.exec(window.location.search);
     if (m) { search.value = decodeURIComponent(m[1].replace(/\+/g, ' ')); filter(); }
   }
+
+  /* ---------- visitor counter ----------
+     Reads the site-wide total from GoatCounter's public counter endpoint
+     (enabled in its settings) and fills the retro counter in the footer.
+     The footer element stays hidden if the request fails. */
+  var counter = document.getElementById('visit-counter');
+  if (counter && window.fetch) {
+    fetch('https://scia.goatcounter.com/counter/TOTAL.json', { credentials: 'omit' })
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (d) {
+        var n = parseInt(String(d.count).replace(/\D/g, ''), 10);   // "1 234" -> 1234
+        if (isNaN(n)) return;
+        var digits = String(n);
+        while (digits.length < 6) digits = '0' + digits;
+        var box = counter.querySelector('.counter-digits');
+        box.textContent = '';
+        digits.split('').forEach(function (ch) {
+          var cell = document.createElement('span');
+          cell.textContent = ch;
+          box.appendChild(cell);
+        });
+        document.getElementById('visit-counter-text').textContent = n.toLocaleString('en-US') + ' visits';
+        counter.hidden = false;
+      })
+      .catch(function () {});
+  }
 })();

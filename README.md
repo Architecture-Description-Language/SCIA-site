@@ -104,9 +104,9 @@ exits non-zero on any axe violation or horizontal overflow.
 
 ## Hosting / deploying
 
-All paths are relative, so the site works at any URL (site root or a subdirectory); only the
-Google Fonts stylesheet is loaded from outside the site, with system-font fallbacks. It can be
-published in two places:
+All paths are relative, so the site works at any URL (site root or a subdirectory). The only
+things loaded from outside the site are the Google Fonts stylesheet (with system-font fallbacks)
+and the GoatCounter analytics script (see below). It can be published in two places:
 
 **GitHub Pages.** Every push to `main` republishes
 <https://architecture-description-language.github.io/SCIA-site/>. Setup (once, in the repo
@@ -128,3 +128,28 @@ The share is not reachable from the campus Wi-Fi network. For that case there is
 `tools/deploy_via_ssh.sh`, which stages the build, rsyncs it to a campus host over SSH and pushes
 it to the share with `smbclient` from there. It is gitignored and kept out of the public
 repository because it names MTU hosts and an account.
+
+## Analytics
+
+Visits are counted with [GoatCounter](https://www.goatcounter.com) — dashboard at
+<https://scia.goatcounter.com>. It sets no cookies and stores no personal data (IP addresses are
+hashed with a daily-rotating salt and discarded), so no consent banner is needed. The tag lives at
+the bottom of `src/layout.html`.
+
+- **Page views** are recorded as `/mtu/<page>` (Michigan Tech web space) or `/gh/<page>`
+  (GitHub Pages) so the two copies can be told apart. Local previews (`localhost`, `127.0.0.1`,
+  `file://`) are not counted. To exclude your own browser, open any page of the site with
+  `#toggle-goatcounter` appended to the URL (it stores a flag in that browser's localStorage).
+- **Events**: clicking any link of a publication counts as `paper/<BibTeX key>` (titled with the
+  paper's title), and the BibTeX button as `download/bibtex`. To count something else, add
+  `data-goatcounter-click="<name>"` (and optionally `data-goatcounter-title`) to the element.
+- **Footer counter**: `main.js` reads the site-wide total from
+  `https://scia.goatcounter.com/counter/TOTAL.json` and shows it as a retro odometer. This needs
+  *Settings → Site settings → "Allow using the visitor counter"* to be enabled in GoatCounter;
+  until then the footer element simply stays hidden.
+
+**Google Search Console** (which searches lead people here): add each URL of the site as a
+*URL-prefix* property at <https://search.google.com/search-console>, choose the **HTML tag**
+verification method, and paste the `<meta name="google-site-verification" …>` line into
+`src/layout.html` where the TODO comment is; one tag verifies every property of that Google
+account. Rebuild, publish, then press *Verify*.

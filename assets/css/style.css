@@ -23,6 +23,9 @@
   --btn-bg-hover: #775818;
   --btn-ink: #ffffff;
   --badge-ink: #6f5216;
+  --counter-bg: #1b2230;
+  --counter-ink: #e9dcbb;
+  --counter-line: #3a4353;
 
   --shadow: 0 1px 2px rgba(27, 34, 48, 0.06), 0 8px 24px rgba(27, 34, 48, 0.08);
   --radius: 10px;
@@ -56,6 +59,9 @@
     --btn-bg-hover: #e6c479;
     --btn-ink: #12161e;
     --badge-ink: #e6c479;
+    --counter-bg: #0b0e13;
+    --counter-ink: #e6c479;
+    --counter-line: #2d3541;
     --shadow: 0 1px 2px rgba(0, 0, 0, 0.4), 0 8px 24px rgba(0, 0, 0, 0.35);
   }
 }
@@ -376,7 +382,19 @@ p { margin: 0 0 1em; }
 .footer-grid a:hover { color: var(--brass-strong); text-decoration: underline; }
 .footer-brand { display: flex; align-items: center; gap: 12px; }
 .footer-brand img { height: 56px; width: auto; }
-.footer-bottom { border-top: 1px solid var(--line); padding-block: 14px; font-size: 0.85rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; }
+.footer-bottom { border-top: 1px solid var(--line); padding-block: 14px; font-size: 0.85rem; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 8px 20px; justify-content: space-between; align-items: center; }
+
+/* retro visitor counter: filled in by main.js from GoatCounter; hidden until the number arrives */
+.visit-counter { display: inline-flex; align-items: center; gap: 8px; }
+.visit-counter[hidden] { display: none; }
+.counter-digits {
+  display: inline-flex; border-radius: 4px; overflow: hidden;
+  background: var(--counter-bg); color: var(--counter-ink); border: 1px solid var(--counter-line);
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+  font-size: 0.85rem; font-weight: 600; line-height: 1; vertical-align: middle;
+}
+.counter-digits span { display: inline-block; width: 1.3em; padding-block: 4px; text-align: center; border-left: 1px solid var(--counter-line); }
+.counter-digits span:first-child { border-left: 0; }
 
 /* ---------- pronunciation line ---------- */
 .pronounce { color: var(--ink-2); margin: -4px 0 14px; font-size: 1rem; }
